@@ -1,0 +1,6 @@
+anki
+ankirspy
+aqt
+pylint
+black
+mypy

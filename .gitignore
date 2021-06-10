@@ -1,0 +1,7 @@
+.vscode/
+.mypy_cache/
+.pytest_cache/
+__pycache__/
+venv/
+build*.zip
+*.pyc
