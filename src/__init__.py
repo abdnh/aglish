@@ -5,7 +5,7 @@ import anki
 import aqt
 
 BUTTON_HTML = """<button id="yg-btn-{id}" style="min-width: 50px; min-height: 25px" onclick="onYGButtonClick(this)">{label}</button>"""
-WIDGET_HTML = """<a id="yg-widget-{id}" class="youglish-widget" data-query="{query}" data-lang="{lang}" {accent} data-zones="{zones}" data-components="{components}" data-bkg-color="{theme}" data-delay-load="1" rel="nofollow" href="https://youglish.com"></a>"""
+WIDGET_HTML = """<a id="yg-widget-{id}" class="youglish-widget" data-query="{query}" data-lang="{lang}" {accent} data-zones="{zones}" data-components="{components}" data-bkg-color="{theme}" {width} {height} data-delay-load="1" rel="nofollow" href="https://youglish.com"></a>"""
 
 # component IDs to customize some features according to Youglish's documentation; most customizations are not utilized by this add-on yet
 component_values = {
@@ -48,6 +48,8 @@ class YouGlishFilter:
             "autoplay": self.autoplay_filter,
             "label": self.label_filter,
             "clozeonly": self.cloze_only_filter,
+            "width": self.width_filter,
+            "height": self.height_filter,
         }
 
         self.components = 10495
@@ -131,6 +133,16 @@ class YouGlishFilter:
             return
         self.query = self._reveal_cloze_text_only()
 
+    def width_filter(self, found: bool, value: str):
+        if value:
+            value = f'width="{value}"'
+        self.width = value
+
+    def height_filter(self, found: bool, value: str):
+        if value:
+            value = f'height="{value}"'
+        self.height = value
+
     def populate_widget(self):
         text = ""
         if not self.autoplay:
@@ -143,6 +155,8 @@ class YouGlishFilter:
             accent=self.accent,
             zones=self.zones,
             theme=self.theme,
+            width=self.width,
+            height=self.height,
         )
         self.text = text
 
