@@ -1,0 +1,48 @@
+<a href="https://apps.ankiweb.net/">Anki</a> add-on for <a href="https://youglish.com/">YouGlish</a>; a service that helps you learn a language in context by showing you Youtube videos containing a word or a phrase you want to learn its pronunciation, meaning, etc.
+
+<img src="https://raw.githubusercontent.com/abdnh/aglish/master/youglish-widget.png" alt="YouGlish Widget">
+
+YouGlish supports many languages and customizations of the interface. This add-on supports all languages supported by YouGlish and some customizations.
+
+The add-on integrates YouGlish with Anki through a custom filter you put in your card templates (e.g. <code>{{aglish:Front}}</code>).
+
+Its usage is quite simple. Let's go through some examples.
+
+<code>{{aglish lang=en accent=uk:Front}}</code>
+This will show you video usage examples of the text in your Front field in British English.
+
+The video widget will be hidden behind a button by default. You can change the text shown on the button via the <code>label</code> option (no spaces allowed for now):
+<code>{{aglish lang=en accent=uk label=youglish_english_uk:Front}}</code>
+
+Alternatively, You can make the video play automatically by using the <code>autoplay</code> option:
+<code>{{aglish lang=en accent=uk autoplay:Front}}</code>
+
+Bear in mind that if you review a lot of cards quickly with autoplay enabled, you may get temporarily blocked or
+asked to solve a captcha. It's recommended to enable autoplay only when the main focus of your note type is the YouGlish videos,
+so that you won't go to the next card before watching a clip, or you will be just answering cards without thinking.
+
+You can combine Anki's <code>cloze-only</code> filter with the <code>aglish</code> filter to query only elided sections in cloze note types:
+<code>{{aglish lang=en:cloze-only:Text}}</code>
+
+The <code>cloze-only</code> filter only works on the back side, so this add-on provides a similar option (<code>clozeonly</code>) that works on both sides as a bonus:
+<code>{{aglish lang=en clozeonly:Text}}</code>
+
+The <code>nocaps</code> option is useful here to hide captions when watching clips containing elided text in the front side:
+<code>{{aglish lang=en clozeonly nocaps:Text}}</code>
+
+You can also change the widget theme using the <code>theme</code> option:
+<code>{{aglish theme=dark:Text}}</code>
+
+Available values are <code>light</code>, <code>dark</code>, and <code>anki</code> (theme used in Anki's interface, the default).
+
+All options have default values so they can be omitted; <code>{{aglish:Front}}</code> assumes English in all accents, showing a widget in Anki's theme with captions.
+
+For a list of all supported languages and accents, see <a href="https://youglish.com/api/doc/js-api">YouGlish documentation</a> (scroll down to the documentation of the <code>widget.fetch</code> function).
+
+<b>References</b>
+
+YouGlish widget API:
+<ul>
+<li><a href="https://youglish.com/api/doc/widget">https://youglish.com/api/doc/widget</a></li>
+<li><a href="https://youglish.com/api/doc/js-api">https://youglish.com/api/doc/js-api</a></li>
+</ul>
