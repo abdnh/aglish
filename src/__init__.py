@@ -2,7 +2,9 @@ import re
 from typing import Optional, Any
 
 import anki
+from anki.cards import Card
 import aqt
+from aqt import gui_hooks
 
 BUTTON_HTML = """<button id="yg-btn-{id}" style="min-width: 50px; min-height: 25px" onclick="onYGButtonClick(this)">{label}</button>"""
 WIDGET_HTML = """<a id="yg-widget-{id}" class="youglish-widget" data-query="{query}" data-lang="{lang}" {accent} data-zones="{zones}" data-components="{components}" data-bkg-color="{theme}" {width} {height} data-delay-load="1" rel="nofollow" href="https://youglish.com"></a>"""
@@ -183,15 +185,10 @@ def youglish_filter(
     return youglish.text
 
 
-def on_card_did_render(
-    output: anki.template.TemplateRenderOutput,
-    context: anki.template.TemplateRenderContext,
-):
+def on_card_will_show(text: str, card: Card, kind: str):
     global cur_id
     cur_id = 0
-    js = "<script>YGParsePageDelayed(); playNonDelayedYGWidgets()</script>"
-    output.question_text += js
-    output.answer_text += js
+    return text + "<script>YGParsePageDelayed(); playNonDelayedYGWidgets()</script>"
 
 
 def on_webview_will_set_content(
@@ -214,5 +211,5 @@ if aqt.mw:
     addon_folder = "/_addons/" + aqt.mw.addonManager.addonFromModule(__name__)
     aqt.mw.addonManager.setWebExports(__name__, r".*js")
     anki.hooks.field_filter.append(youglish_filter)
-    anki.hooks.card_did_render.append(on_card_did_render)
+    gui_hooks.card_will_show.append(on_card_will_show)
     aqt.gui_hooks.webview_will_set_content.append(on_webview_will_set_content)
