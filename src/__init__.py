@@ -5,6 +5,10 @@ import anki
 from anki.cards import Card
 import aqt
 from aqt import gui_hooks
+from aqt.clayout import CardLayout
+from aqt.reviewer import Reviewer
+from aqt.previewer import Previewer
+
 
 BUTTON_HTML = """<button id="yg-btn-{id}" style="min-width: 50px; min-height: 25px" onclick="onYGButtonClick(this)">{label}</button>"""
 WIDGET_HTML = """<a id="yg-widget-{id}" class="youglish-widget" data-query="{query}" data-lang="{lang}" {accent} data-zones="{zones}" data-components="{components}" data-bkg-color="{theme}" {width} {height} data-delay-load="1" rel="nofollow" href="https://youglish.com"></a>"""
@@ -197,7 +201,7 @@ def on_webview_will_set_content(
 
     if not isinstance(
         context,
-        (aqt.reviewer.Reviewer, aqt.previewer.Previewer, aqt.clayout.CardLayout),
+        (Reviewer, Previewer, CardLayout),
     ):
         return
 
