@@ -64,7 +64,7 @@ class YouGlishFilter:
         self.query = text
         self.context = context
         configs = {}
-        for config in map(lambda c: c.split("="), filter_name.split(" ")[1:]):
+        for config in map(lambda c: c.split("="), filter_name.split()[1:]):
             value = ""
             if len(config) >= 2:
                 value = config[1]
@@ -189,7 +189,7 @@ def youglish_filter(
     return youglish.text
 
 
-def on_card_will_show(text: str, card: Card, kind: str):
+def on_card_will_show(text: str, card: Card, kind: str) -> str:
     global cur_id
     cur_id = 0
     return text + "<script>YGParsePageDelayed(); playNonDelayedYGWidgets()</script>"
