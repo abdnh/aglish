@@ -10,10 +10,19 @@ from aqt.reviewer import Reviewer
 from aqt.previewer import Previewer
 
 
-BUTTON_HTML = """<button id="yg-btn-{id}" style="min-width: 50px; min-height: 25px" onclick="onYGButtonClick(this)">{label}</button>"""
-WIDGET_HTML = """<a id="yg-widget-{id}" class="youglish-widget" data-query="{query}" data-lang="{lang}" {accent} data-zones="{zones}" data-components="{components}" data-bkg-color="{theme}" {width} {height} data-delay-load="1" rel="nofollow" href="https://youglish.com"></a>"""
+BUTTON_HTML = """\
+<button id="yg-btn-{id}" style="min-width: 50px; min-height: 25px" \
+onclick="onYGButtonClick(this)">{label}</button>
+"""
 
-# component IDs to customize some features according to Youglish's documentation; most customizations are not utilized by this add-on yet
+WIDGET_HTML = """\
+<a id="yg-widget-{id}" class="youglish-widget" data-query="{query}" data-lang="{lang}" {accent} \
+data-zones="{zones}" data-components="{components}" \
+data-bkg-color="{theme}" {width} {height} data-delay-load="1" \
+rel="nofollow" href="https://youglish.com"></a>"""
+
+# Component IDs to customize some features according to Youglish's documentation.
+# Most customizations are not utilized by this add-on yet
 component_values = {
     "search_box": 1,
     "accent_panel": 2,
@@ -118,8 +127,10 @@ class YouGlishFilter:
             value = "Youglish"
         self.label = value
 
-    # we have a custom 'clozeonly' parameter for our filter akin to Anki's 'cloze-only' filter that renders only clozed text, but on both sides of the card instead of just the back
-    # adapted from Anki's source (https://github.com/ankitects/anki/blob/e8d1a035a265e2f657f92c158f3fad40a4e0ce46/rslib/src/cloze.rs#L49)
+    # We have a custom 'clozeonly' parameter for our filter akin to Anki's 'cloze-only' filter
+    # that renders only clozed text, but on both sides of the card instead of just the back.
+    # Adapted from Anki's source
+    # (https://github.com/ankitects/anki/blob/e8d1a035a265e2f657f92c158f3fad40a4e0ce46/rslib/src/cloze.rs#L49)
 
     CLOZE = re.compile(r"(?xsi)\{\{c(\d+)::(.*?)(?:::(.*?))?\}\}")
 
@@ -167,7 +178,7 @@ class YouGlishFilter:
         self.text = text
 
 
-cur_id = 0
+CURRENT_ID = 0
 
 
 def youglish_filter(
@@ -177,21 +188,21 @@ def youglish_filter(
     context: anki.template.TemplateRenderContext,
 ) -> str:
 
-    global cur_id
+    global CURRENT_ID
 
     try:
-        youglish = YouGlishFilter(cur_id, filter_name, field_text, context)
+        youglish = YouGlishFilter(CURRENT_ID, filter_name, field_text, context)
     except Exception as ex:
         return field_text
 
-    cur_id += 1
+    CURRENT_ID += 1
 
     return youglish.text
 
 
 def on_card_will_show(text: str, card: Card, kind: str) -> str:
-    global cur_id
-    cur_id = 0
+    global CURRENT_ID
+    CURRENT_ID = 0
     return text + "<script>YGParsePageDelayed(); playNonDelayedYGWidgets()</script>"
 
 
