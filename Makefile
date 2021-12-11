@@ -1,17 +1,14 @@
-.PHONY: all zip addon format checkformat typecheck lint check clean
+.PHONY: all zip format checkformat typecheck lint check clean
 
 all: zip
 
-zip: build.zip
+zip: aglish.ankiaddon
 
-build.zip: src/*
+aglish.ankiaddon: src/*
 	rm -f $@
 	rm -f src/meta.json
 	rm -rf src/__pycache__
 	( cd src/; zip -r ../$@ * )
-
-addon: zip
-	cp build.zip aglish.ankiaddon
 
 format:
 	python -m black src
@@ -31,4 +28,4 @@ clean:
 	rm -f *.pyc
 	rm -f src/*.pyc
 	rm -f src/__pycache__
-	rm -f build.zip
+	rm -f aglish.ankiaddon
