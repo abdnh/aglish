@@ -1,5 +1,4 @@
 anki
-ankirspy
 aqt
 pylint
 black
