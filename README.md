@@ -44,6 +44,7 @@ All options have default values so they can be omitted; `{{aglish:Front}}` assum
 
 For a list of all supported languages and accents, see [YouGlish documentation](https://youglish.com/api/doc/js-api) (scroll down to the documentation of the `widget.fetch` function).
 
+Watch [this video](https://www.youtube.com/watch?v=aqc98e5ar64) for a demo of the add-on.
 
 ## References
 
