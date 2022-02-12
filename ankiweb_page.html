@@ -1,6 +1,9 @@
 <a href="https://apps.ankiweb.net/">Anki</a> add-on for <a href="https://youglish.com/">YouGlish</a>; a service that helps you learn a language in context by showing you Youtube videos containing a word or a phrase you want to learn its pronunciation, meaning, etc.
 <img src="https://raw.githubusercontent.com/abdnh/aglish/master/youglish-widget.png" alt="YouGlish Widget">
 YouGlish supports many languages and customizations of the interface. This add-on supports all languages supported by YouGlish and some customizations.
+
+<b>Usage</b>
+
 The add-on integrates YouGlish with Anki through a custom filter you put in your card templates (e.g. <code>{{aglish:Front}}</code>).
 Its usage is quite simple. Let's go through some examples:
 <ul>
@@ -32,7 +35,14 @@ For a list of all supported languages and accents, see <a href="https://youglish
 
 Watch <a href="https://www.youtube.com/watch?v=aqc98e5ar64">this video</a> for a demo of the add-on.
 
-<b id="references">References</b>
+<b>Experimental Support for YouGlish login</b>
+
+I've recently added experimental support to allow users to use their YouGlish account and premium subscription plans in the add-on. This is not tested. I appreciate if someone can test it with their premium plan and tell me about the result.
+To use your YouGlish account with the add-on, you first need to log in to your YouGlish account in your web browser, then copy some cookie values and paste them in the <a href="https://docs.ankiweb.net/addons.html">add-on's config</a> under the <code>cookies</code> property.
+You can see the cookies by opening the developer tools of your browser and going to the Storage tab, then you will find a list of values under **Cookies &gt; <a href="https://youglish.com">https://youglish.com</a> **. You need to copy at least the values of the cookies with the following names: <code>__stripe_mid</code>, <code>yg_username</code>, <code>yg_session</code>, and <code>JSESSIONID</code>.
+See <a href="https://cookie-script.com/documentation/how-to-check-cookies-on-chrome-and-firefox">https://cookie-script.com/documentation/how-to-check-cookies-on-chrome-and-firefox</a> for more detailed instructions. You may need to change these values periodically, and you'll need to change them if you log out of your YouGlish account in the browser.
+
+<b>References</b>
 
 YouGlish widget API:
 <ul>

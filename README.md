@@ -12,6 +12,7 @@ to learn its pronunciation, meaning, etc.
 
 YouGlish supports many languages and customizations of the interface. This add-on supports all languages supported by YouGlish and some customizations.
 
+## Usage
 
 The add-on integrates YouGlish with Anki through a custom filter you put in your card templates (e.g. `{{aglish:Front}}`).
 
@@ -45,6 +46,18 @@ All options have default values so they can be omitted; `{{aglish:Front}}` assum
 For a list of all supported languages and accents, see [YouGlish documentation](https://youglish.com/api/doc/js-api) (scroll down to the documentation of the `widget.fetch` function).
 
 Watch [this video](https://www.youtube.com/watch?v=aqc98e5ar64) for a demo of the add-on.
+
+## Experimental Support for YouGlish login
+
+I've recently added experimental support to allow users to use their YouGlish account and premium subscription plans in the add-on. This is not tested. I appreciate if someone can test it with their premium plan and tell me about the result.
+
+To use your YouGlish account with the add-on, you first need to log in to your YouGlish account in your
+web browser, then copy some cookie values and paste them in the [add-on's config](https://docs.ankiweb.net/addons.html) under the `cookies` property.
+You can see the cookies by opening the developer tools of your browser and going to the Storage tab,
+then you will find a list of values under **Cookies > https://youglish.com **. You need to copy at least
+the values of the cookies with the following names: `__stripe_mid`, `yg_username`, `yg_session`, and `JSESSIONID`.
+See https://cookie-script.com/documentation/how-to-check-cookies-on-chrome-and-firefox for more detailed instructions.
+You may need to change these values periodically, and you'll need to change them if you log out of your YouGlish account in the browser.
 
 ## References
 

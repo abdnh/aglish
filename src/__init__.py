@@ -8,6 +8,13 @@ from aqt import gui_hooks
 from aqt.clayout import CardLayout
 from aqt.reviewer import Reviewer
 from aqt.previewer import Previewer
+from aqt.webview import WebContent
+from aqt.qt import QUrl, qtmajor
+
+if qtmajor > 5:
+    from PyQt6.QtNetwork import QNetworkCookie
+else:
+    from PyQt5.QtNetwork import QNetworkCookie
 
 
 BUTTON_HTML = """\
@@ -206,9 +213,7 @@ def on_card_will_show(text: str, card: Card, kind: str) -> str:
     return text + "<script>YGParsePageDelayed(); playNonDelayedYGWidgets()</script>"
 
 
-def on_webview_will_set_content(
-    web_content: aqt.webview.WebContent, context: Optional[Any]
-):
+def on_webview_will_set_content(web_content: WebContent, context: Optional[Any]):
 
     if not isinstance(
         context,
@@ -220,6 +225,15 @@ def on_webview_will_set_content(
         '<script async src="https://youglish.com/public/emb/widget.js"></script>'
     )
     web_content.body += f'<script defer src="{addon_folder}/aglish.js"></script>'
+
+    # Experimental support for YouGlish login - not tested
+    config = context.mw.addonManager.getConfig(__name__)
+    cookies = config.get("cookies", {})
+    cookie_store = context.web.page().profile().cookieStore()
+    for name, value in cookies.items():
+        if value:
+            cookie = QNetworkCookie(name.encode(), value.encode())
+            cookie_store.setCookie(cookie, QUrl("https://youglish.com/"))
 
 
 if aqt.mw:
