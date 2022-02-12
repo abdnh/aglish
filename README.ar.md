@@ -50,6 +50,8 @@
 
 لرؤية كل اللغات واللهجات المدعومة، انظر [توثيق YouGlish](https://youglish.com/api/doc/js-api) (انزل للأسفل إلى توثيق دالة `widget.fetch`).
 
+شاهد [هذا الفيديو](https://www.youtube.com/watch?v=aqc98e5ar64) لاستعراض للإضافة.
+
 ## مراجع
 
 توثيق واجهة YouGlish
