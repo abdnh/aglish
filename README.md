@@ -54,7 +54,7 @@ I've recently added experimental support to allow users to use their YouGlish ac
 To use your YouGlish account with the add-on, you first need to log in to your YouGlish account in your
 web browser, then copy some cookie values and paste them in the [add-on's config](https://docs.ankiweb.net/addons.html) under the `cookies` property.
 You can see the cookies by opening the developer tools of your browser and going to the Storage tab,
-then you will find a list of values under **Cookies > https://youglish.com **. You need to copy at least
+then you will find a list of values under **Cookies > https://youglish.com**. You need to copy at least
 the values of the cookies with the following names: `__stripe_mid`, `yg_username`, `yg_session`, and `JSESSIONID`.
 See https://cookie-script.com/documentation/how-to-check-cookies-on-chrome-and-firefox for more detailed instructions.
 You may need to change these values periodically, and you'll need to change them if you log out of your YouGlish account in the browser.
