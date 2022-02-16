@@ -229,7 +229,13 @@ def on_webview_will_set_content(web_content: WebContent, context: Optional[Any])
     # Experimental support for YouGlish login - not tested
     config = context.mw.addonManager.getConfig(__name__)
     cookies = config.get("cookies", {})
-    cookie_store = context.web.page().profile().cookieStore()
+    if isinstance(context, Previewer):
+        web = context._web
+    elif isinstance(context, CardLayout):
+        web = context.preview_web
+    else:
+        web = context.web
+    cookie_store = web.page().profile().cookieStore()
     for name, value in cookies.items():
         if value:
             cookie = QNetworkCookie(name.encode(), value.encode())
