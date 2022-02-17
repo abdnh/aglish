@@ -62,6 +62,7 @@ You may need to change these values periodically, and you'll need to change them
 ## References
 
 YouGlish widget API:
+
  - https://youglish.com/api/doc/widget
  - https://youglish.com/api/doc/js-api
 

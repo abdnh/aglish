@@ -1,22 +1,16 @@
-<a href="https://apps.ankiweb.net/">Anki</a> add-on for <a href="https://youglish.com/">YouGlish</a>; a service that helps you learn a language in context by showing you Youtube videos containing a word or a phrase you want to learn its pronunciation, meaning, etc.
-<img src="https://raw.githubusercontent.com/abdnh/aglish/master/youglish-widget.png" alt="YouGlish Widget">
+<a href="https://apps.ankiweb.net/">Anki</a> add-on for <a href="https://youglish.com/">YouGlish</a>; a service that helps you learn a language in context by showing you Youtube videos containing a word or a phrase you want to learn its pronunciation, meaning, etc.
+<img alt="YouGlish Widget"  src="https://raw.githubusercontent.com/abdnh/aglish/master/youglish-widget.png"/>
 YouGlish supports many languages and customizations of the interface. This add-on supports all languages supported by YouGlish and some customizations.
 
-<b>Usage</b>
-
+<b>## Usage</b>
 The add-on integrates YouGlish with Anki through a custom filter you put in your card templates (e.g. <code>{{aglish:Front}}</code>).
 Its usage is quite simple. Let's go through some examples:
 <ul>
-<li><code>{{aglish lang=english accent=uk:Front}}</code>
-This will show you video usage examples of the text in your Front field in British English.</li>
-<li>The video widget will be hidden behind a button by default.
-You can change the text shown on the button via the <code>label</code> option (no spaces allowed for now):
+<li><code>{{aglish lang=english accent=uk:Front}}</code> This will show you video usage examples of the text in your Front field in British English.</li>
+<li>The video widget will be hidden behind a button by default. You can change the text shown on the button via the <code>label</code> option (no spaces allowed for now):
 <code>{{aglish lang=english accent=uk label=youglish_english_uk:Front}}</code></li>
 <li>Alternatively, You can make the video play automatically by using the <code>autoplay</code> option:
-<code>{{aglish lang=english accent=uk autoplay:Front}}</code>
-Bear in mind that if you review a lot of cards quickly with autoplay enabled, you may get temporarily blocked or
-asked to solve a captcha. It's recommended to enable autoplay only when the main focus of your note type is the YouGlish videos,
-so that you won't go to the next card before watching a clip, or you will be just answering cards without thinking.</li>
+<code>{{aglish lang=english accent=uk autoplay:Front}}</code> Bear in mind that if you review a lot of cards quickly with autoplay enabled, you may get temporarily blocked or asked to solve a captcha. It's recommended to enable autoplay only when the main focus of your note type is the YouGlish videos, so that you won't go to the next card before watching a clip, or you will be just answering cards without thinking.</li>
 <li>You can combine Anki's <code>cloze-only</code> filter with the <code>aglish</code> filter to query only elided sections in cloze note types:
 <code>{{aglish lang=english:cloze-only:Text}}</code></li>
 <li>The <code>cloze-only</code> filter only works on the back side, so this add-on provides a similar option (<code>clozeonly</code>) that works on both sides as a bonus:
@@ -24,28 +18,18 @@ so that you won't go to the next card before watching a clip, or you will be jus
 <li>The <code>nocaps</code> option is useful here to hide captions when watching clips containing elided text in the front side:
 <code>{{aglish lang=english clozeonly nocaps:Text}}</code></li>
 <li>You can also change the widget theme using the <code>theme</code> option:
-<code>{{aglish theme=dark:Text}}</code>
-Available values are <code>light</code>, <code>dark</code>, and <code>anki</code> (theme used in Anki's interface, the default).</li>
+<code>{{aglish theme=dark:Text}}</code> Available values are <code>light</code>, <code>dark</code>, and <code>anki</code> (theme used in Anki's interface, the default).</li>
 <li>The width and height of the widget can be customized using the <code>width</code> and <code>height</code> options:
-<code>{{aglish lang=arabic width=600 height=500:Front}}</code>
-The widget will expand to the window size if these options are not specified.</li>
+<code>{{aglish lang=arabic width=600 height=500:Front}}</code> The widget will expand to the window size if these options are not specified.</li>
 </ul>
 All options have default values so they can be omitted; <code>{{aglish:Front}}</code> assumes English in all accents, showing a widget in Anki's theme with captions.
 For a list of all supported languages and accents, see <a href="https://youglish.com/api/doc/js-api">YouGlish documentation</a> (scroll down to the documentation of the <code>widget.fetch</code> function).
-
 Watch <a href="https://www.youtube.com/watch?v=aqc98e5ar64">this video</a> for a demo of the add-on.
 
-<b>Experimental Support for YouGlish login</b>
-
+<b>## Experimental Support for YouGlish login</b>
 I've recently added experimental support to allow users to use their YouGlish account and premium subscription plans in the add-on. This is not tested. I appreciate if someone can test it with their premium plan and tell me about the result.
-To use your YouGlish account with the add-on, you first need to log in to your YouGlish account in your web browser, then copy some cookie values and paste them in the <a href="https://docs.ankiweb.net/addons.html">add-on's config</a> under the <code>cookies</code> property.
-You can see the cookies by opening the developer tools of your browser and going to the Storage tab, then you will find a list of values under <b>Cookies &gt; <a href="https://youglish.com">https://youglish.com</a></b>. You need to copy at least the values of the cookies with the following names: <code>__stripe_mid</code>, <code>yg_username</code>, <code>yg_session</code>, and <code>JSESSIONID</code>.
-See <a href="https://cookie-script.com/documentation/how-to-check-cookies-on-chrome-and-firefox">https://cookie-script.com/documentation/how-to-check-cookies-on-chrome-and-firefox</a> for more detailed instructions. You may need to change these values periodically, and you'll need to change them if you log out of your YouGlish account in the browser.
+To use your YouGlish account with the add-on, you first need to log in to your YouGlish account in your web browser, then copy some cookie values and paste them in the <a href="https://docs.ankiweb.net/addons.html">add-on's config</a> under the <code>cookies</code> property. You can see the cookies by opening the developer tools of your browser and going to the Storage tab, then you will find a list of values under Cookies &gt; https://youglish.com. You need to copy at least the values of the cookies with the following names: <code>__stripe_mid</code>, <code>yg_username</code>, <code>yg_session</code>, and <code>JSESSIONID</code>. See https://cookie-script.com/documentation/how-to-check-cookies-on-chrome-and-firefox for more detailed instructions. You may need to change these values periodically, and you'll need to change them if you log out of your YouGlish account in the browser.
 
-<b>References</b>
-
+<b>## References</b>
 YouGlish widget API:
-<ul>
-<li><a href="https://youglish.com/api/doc/widget">https://youglish.com/api/doc/widget</a></li>
-<li><a href="https://youglish.com/api/doc/js-api">https://youglish.com/api/doc/js-api</a></li>
-</ul>
+<ul><li>https://youglish.com/api/doc/widget</li><li>https://youglish.com/api/doc/js-api</li></ul>
