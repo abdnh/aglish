@@ -1,4 +1,4 @@
-.PHONY: all zip format checkformat typecheck lint check clean
+.PHONY: all zip pylint mypy check fix clean
 
 all: zip
 
@@ -10,19 +10,19 @@ aglish.ankiaddon: src/*
 	rm -rf src/__pycache__
 	( cd src/; zip -r ../$@ * )
 
-format:
+fix:
 	python -m black src
+	python -m isort src
 
-checkformat:
+check:
 	python -m black --diff --color src
+	python -m isort --diff --color src
 
-typecheck:
+mypy:
 	python -m mypy src
 
-lint:
+pylint:
 	python -m pylint src
-
-check: lint typecheck checkformat
 
 clean:
 	rm -f *.pyc

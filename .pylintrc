@@ -1,0 +1,21 @@
+[MASTER]
+extension-pkg-whitelist=PyQt6,PyQt5
+
+[REPORTS]
+output-format=colorized
+
+[MESSAGES CONTROL]
+disable=
+  line-too-long,
+  too-many-instance-attributes,
+  unused-argument,
+  attribute-defined-outside-init,
+  missing-function-docstring,
+  missing-module-docstring,
+  missing-class-docstring,
+  unused-argument,
+  broad-except
+
+[BASIC]
+good-names =
+  mw

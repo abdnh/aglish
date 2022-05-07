@@ -1,5 +1,8 @@
 anki
 aqt
+PyQt5
+PyQt6
 pylint
 black
 mypy
+isort

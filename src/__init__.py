@@ -1,15 +1,15 @@
 import re
-from typing import Optional, Any
+from typing import Any, Optional
 
 import anki
-from anki.cards import Card
 import aqt
+from anki.cards import Card
 from aqt import gui_hooks
 from aqt.clayout import CardLayout
-from aqt.reviewer import Reviewer
 from aqt.previewer import Previewer
-from aqt.webview import WebContent
 from aqt.qt import QUrl, qtmajor
+from aqt.reviewer import Reviewer
+from aqt.webview import WebContent
 
 if qtmajor > 5:
     from PyQt6.QtNetwork import QNetworkCookie
@@ -142,15 +142,15 @@ class YouGlishFilter:
     CLOZE = re.compile(r"(?xsi)\{\{c(\d+)::(.*?)(?:::(.*?))?\}\}")
 
     def _reveal_cloze_text_only(self) -> str:
-        def match_filter(m: re.Match) -> bool:
+        def match_filter(match: re.Match) -> bool:
             try:
-                captured_ord = int(m.group(1))
+                captured_ord = int(match.group(1))
             except ValueError:
                 captured_ord = 0
             return captured_ord == self.context.card().ord + 1
 
         matches = filter(match_filter, self.CLOZE.finditer(self.query))
-        return " ".join(map(lambda m: m.group(2), matches))
+        return " ".join(map(lambda match: match.group(2), matches))
 
     def cloze_only_filter(self, found: bool, value: str):
         if not found:
@@ -199,7 +199,7 @@ def youglish_filter(
 
     try:
         youglish = YouGlishFilter(CURRENT_ID, filter_name, field_text, context)
-    except Exception as ex:
+    except:
         return field_text
 
     CURRENT_ID += 1
@@ -230,7 +230,7 @@ def on_webview_will_set_content(web_content: WebContent, context: Optional[Any])
     config = context.mw.addonManager.getConfig(__name__)
     cookies = config.get("cookies", {})
     if isinstance(context, Previewer):
-        web = context._web
+        web = context._web  # pylint: disable=protected-access
     elif isinstance(context, CardLayout):
         web = context.preview_web
     else:
