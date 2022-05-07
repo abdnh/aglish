@@ -6,9 +6,13 @@ zip: aglish.ankiaddon
 
 aglish.ankiaddon: src/*
 	rm -f $@
-	rm -f src/meta.json
 	rm -rf src/__pycache__
 	( cd src/; zip -r ../$@ * )
+
+# Install in a testing profile
+install:
+	rm -rf src/__pycache__
+	cp -r src/. ankiprofile/addons21/aglish
 
 fix:
 	python -m black src
