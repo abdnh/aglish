@@ -2,7 +2,7 @@
 
 Read in: [العربية](README.ar.md)
 
---------
+---
 
 [Anki](https://apps.ankiweb.net/) add-on for [YouGlish](https://youglish.com/); a service that helps you learn
 a language in context by showing you Youtube videos containing a word or a phrase you want
@@ -14,7 +14,7 @@ YouGlish supports many languages and customizations of the interface. This add-o
 
 ## Usage
 
-The add-on integrates YouGlish with Anki through a custom filter you put in your card templates (e.g. `{{aglish:Front}}`).
+The add-on integrates YouGlish with Anki through a custom filter you put in your [card templates](https://docs.ankiweb.net/templates/intro.html) (e.g. `{{aglish:Front}}`).
 
 Its usage is quite simple. Let's go through some examples:
 
@@ -33,13 +33,13 @@ Its usage is quite simple. Let's go through some examples:
 - The `cloze-only` filter only works on the back side, so this add-on provides a similar option (`clozeonly`) that works on both sides as a bonus:  
   `{{aglish lang=english clozeonly:Text}}`
 - The `nocaps` option is useful here to hide captions when watching clips containing elided text in the front side:  
-`{{aglish lang=english clozeonly nocaps:Text}}`
+  `{{aglish lang=english clozeonly nocaps:Text}}`
 - You can also change the widget theme using the `theme` option:  
-`{{aglish theme=dark:Text}}`  
-  Available values are `light`, `dark`, and `anki` (theme used in Anki's interface, the default).
+  `{{aglish theme=dark:Text}}`  
+   Available values are `light`, `dark`, and `anki` (theme used in Anki's interface, the default).
 - The width and height of the widget can be customized using the `width` and `height` options:  
-`{{aglish lang=arabic width=600 height=500:Front}}`  
-  The widget will expand to the window size if these options are not specified.
+  `{{aglish lang=arabic width=600 height=500:Front}}`  
+   The widget will expand to the window size if these options are not specified.
 
 All options have default values so they can be omitted; `{{aglish:Front}}` assumes English in all accents, showing a widget in Anki's theme with captions.
 
@@ -63,9 +63,8 @@ You may need to change these values periodically, and you'll need to change them
 
 YouGlish widget API:
 
- - https://youglish.com/api/doc/widget
- - https://youglish.com/api/doc/js-api
-
+- https://youglish.com/api/doc/widget
+- https://youglish.com/api/doc/js-api
 
 # Support
 
