@@ -18,31 +18,25 @@ else:
     from PyQt5.QtNetwork import QNetworkCookie
 
 
-CURRENT_ID = 0
-
-
 def youglish_filter(
     field_text: str,
     field_name: str,
     filter_name: str,
     context: anki.template.TemplateRenderContext,
 ) -> str:
-
-    global CURRENT_ID
+    current_id = context.extra_state.get("aglish_id", 0)
 
     try:
-        youglish = YouGlishFilter(CURRENT_ID, filter_name, field_text, context)
+        youglish = YouGlishFilter(current_id, filter_name, field_text, context)
     except:
         return field_text
 
-    CURRENT_ID += 1
+    context.extra_state["aglish_id"] = current_id + 1
 
     return youglish.text
 
 
 def on_card_will_show(text: str, card: Card, kind: str) -> str:
-    global CURRENT_ID
-    CURRENT_ID = 0
     return text + "<script>YGParsePageDelayed(); playNonDelayedYGWidgets()</script>"
 
 
