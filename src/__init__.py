@@ -15,7 +15,7 @@ from .filter import YouGlishFilter
 if qtmajor > 5:
     from PyQt6.QtNetwork import QNetworkCookie
 else:
-    from PyQt5.QtNetwork import QNetworkCookie
+    from PyQt5.QtNetwork import QNetworkCookie  # type: ignore
 
 
 def youglish_filter(
@@ -40,7 +40,9 @@ def on_card_will_show(text: str, card: Card, kind: str) -> str:
     return text + "<script>YGParsePageDelayed(); playNonDelayedYGWidgets()</script>"
 
 
-def on_webview_will_set_content(web_content: WebContent, context: Optional[Any]):
+def on_webview_will_set_content(
+    web_content: WebContent, context: Optional[Any]
+) -> None:
 
     if not isinstance(
         context,

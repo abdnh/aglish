@@ -82,28 +82,28 @@ class YouGlishFilter:
 
         self.populate_widget()
 
-    def nocaps_filter(self, found: bool, value: str):
+    def nocaps_filter(self, found: bool, value: str) -> None:
         if found:
             self.components -= (
                 component_values["caption"] + component_values["all_captions"]
             )
 
-    def lang_filter(self, found: bool, value: str):
+    def lang_filter(self, found: bool, value: str) -> None:
         if not value:
             value = "en"
         self.lang = value
 
-    def zones_filter(self, found: bool, value: str):
+    def zones_filter(self, found: bool, value: str) -> None:
         if not value:
             value = "all"
         self.zones = value
 
-    def accent_filter(self, found: bool, value: str):
+    def accent_filter(self, found: bool, value: str) -> None:
         if value:
             value = 'data-accent="{}"'.format(value)
         self.accent = value
 
-    def theme_filter(self, found: bool, value: str):
+    def theme_filter(self, found: bool, value: str) -> None:
         if not value or value == "anki":
             if aqt.theme.theme_manager.night_mode:
                 value = "dark"
@@ -112,10 +112,10 @@ class YouGlishFilter:
         value = "theme_" + value
         self.theme = value
 
-    def autoplay_filter(self, found: bool, value: str):
+    def autoplay_filter(self, found: bool, value: str) -> None:
         self.autoplay = found
 
-    def label_filter(self, found: bool, value: str):
+    def label_filter(self, found: bool, value: str) -> None:
         if not value:
             value = "Youglish"
         self.label = value
@@ -138,22 +138,22 @@ class YouGlishFilter:
         matches = filter(match_filter, self.CLOZE.finditer(self.query))
         return " ".join(map(lambda match: match.group(2), matches))
 
-    def cloze_only_filter(self, found: bool, value: str):
+    def cloze_only_filter(self, found: bool, value: str) -> None:
         if not found:
             return
         self.query = self._reveal_cloze_text_only()
 
-    def width_filter(self, found: bool, value: str):
+    def width_filter(self, found: bool, value: str) -> None:
         if value:
             value = f'width="{value}"'
         self.width = value
 
-    def height_filter(self, found: bool, value: str):
+    def height_filter(self, found: bool, value: str) -> None:
         if value:
             value = f'height="{value}"'
         self.height = value
 
-    def populate_widget(self):
+    def populate_widget(self) -> None:
         text = ""
         if not self.autoplay:
             text += BUTTON_HTML.format(id=self.ID, label=self.label)

@@ -14,8 +14,10 @@ disable=
   missing-module-docstring,
   missing-class-docstring,
   unused-argument,
-  broad-except
+  broad-except,
+  bare-except,
 
 [BASIC]
 good-names =
-  mw
+  mw,
+  ID,
