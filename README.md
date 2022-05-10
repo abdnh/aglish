@@ -40,6 +40,10 @@ Its usage is quite simple. Let's go through some examples:
 - The width and height of the widget can be customized using the `width` and `height` options:  
   `{{aglish lang=arabic width=600 height=500:Front}}`  
    The widget will expand to the window size if these options are not specified.
+- You can enable "Restricted mode" to block potentially inappropriate content to be displayed (aka Kids Mode)
+  by setting the "restrict" option to "1", like this:
+  `{{aglish restrict=1:Front}}`  
+  The default is `0` (disabled).
 
 All options have default values so they can be omitted; `{{aglish:Front}}` assumes English in all accents, showing a widget in Anki's theme with captions.
 

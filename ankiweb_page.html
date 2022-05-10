@@ -21,6 +21,9 @@ Its usage is quite simple. Let's go through some examples:
 <code>{{aglish theme=dark:Text}}</code> Available values are <code>light</code>, <code>dark</code>, and <code>anki</code> (theme used in Anki's interface, the default).</li>
 <li>The width and height of the widget can be customized using the <code>width</code> and <code>height</code> options:
 <code>{{aglish lang=arabic width=600 height=500:Front}}</code> The widget will expand to the window size if these options are not specified.</li>
+<li>You can enable "Restricted mode" to block potentially inappropriate content to be displayed (aka Kids Mode) by setting the "restrict" option to "1", like this:
+<code>{{aglish restrict=1:Front}}</code> The default is <code>0</code> (disabled).
+</li>
 </ul>
 All options have default values so they can be omitted; <code>{{aglish:Front}}</code> assumes English in all accents, showing a widget in Anki's theme with captions.
 For a list of all supported languages and accents, see <a href="https://youglish.com/api/doc/js-api">YouGlish documentation</a> (scroll down to the documentation of the <code>widget.fetch</code> function).

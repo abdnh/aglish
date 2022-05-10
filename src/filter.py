@@ -11,7 +11,7 @@ onclick="onYGButtonClick(this)">{label}</button>
 WIDGET_HTML = """\
 <a id="yg-widget-{id}" class="youglish-widget" data-query="{query}" data-lang="{lang}" {accent} \
 data-zones="{zones}" data-components="{components}" \
-data-bkg-color="{theme}" {width} {height} data-delay-load="1" \
+data-bkg-color="{theme}" {width} {height} data-rest-mode="{restrict}" data-delay-load="1" \
 rel="nofollow" href="https://youglish.com"></a>"""
 
 # Component IDs to customize some features according to Youglish's documentation.
@@ -58,6 +58,7 @@ class YouGlishFilter:
             "clozeonly": self.cloze_only_filter,
             "width": self.width_filter,
             "height": self.height_filter,
+            "restrict": self.restrict_filter,
         }
 
         self.components = 10495
@@ -153,6 +154,11 @@ class YouGlishFilter:
             value = f'height="{value}"'
         self.height = value
 
+    def restrict_filter(self, found: bool, value: str) -> None:
+        if not value:
+            value = "0"
+        self.restrict = value
+
     def populate_widget(self) -> None:
         text = ""
         if not self.autoplay:
@@ -167,5 +173,6 @@ class YouGlishFilter:
             theme=self.theme,
             width=self.width,
             height=self.height,
+            restrict=self.restrict,
         )
         self.text = text
