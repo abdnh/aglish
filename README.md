@@ -70,7 +70,17 @@ YouGlish widget API:
 - https://youglish.com/api/doc/widget
 - https://youglish.com/api/doc/js-api
 
-# Support
+
+## YouGlish & YouTube Terms of Service
+
+You may want to read the Privacy & Terms of Service pages of both YouGlish and YouTube:
+
+- https://youglish.com/terms
+- https://www.youtube.com/t/terms
+- https://policies.google.com/privacy
+
+
+## Support
 
 Consider supporting me on Ko-fi if you like my add-ons.
 
