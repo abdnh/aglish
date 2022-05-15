@@ -47,19 +47,19 @@ class YouGlishFilter:
             self.text = text
             raise Exception("not our filter")
 
-        self.funcs = {
-            "nocaps": self.nocaps_filter,
-            "lang": self.lang_filter,
-            "zones": self.zones_filter,
-            "accent": self.accent_filter,
-            "theme": self.theme_filter,
-            "autoplay": self.autoplay_filter,
-            "label": self.label_filter,
-            "clozeonly": self.cloze_only_filter,
-            "width": self.width_filter,
-            "height": self.height_filter,
-            "restrict": self.restrict_filter,
-            "hotkey": self.hotkey_filter,
+        self.supported_options = {
+            "nocaps",
+            "lang",
+            "zones",
+            "accent",
+            "theme",
+            "autoplay",
+            "label",
+            "clozeonly",
+            "width",
+            "height",
+            "restrict",
+            "hotkey",
         }
 
         self.components = 10495
@@ -72,40 +72,39 @@ class YouGlishFilter:
             value = ""
             if len(config) >= 2:
                 value = config[1]
-            configs[config[0]] = value
-
-        for config_filter in self.funcs:
+            configs[config[0].lower()] = value
+        for option in self.supported_options:
             found = False
-            if config_filter in configs:
+            if option in configs:
                 found = True
-            value = configs.get(config_filter, "")
-            func = self.funcs[config_filter]
-            func(found, value.lower())
+            value = configs.get(option, "").lower()
+            func = getattr(self, f"handle_{option}")
+            func(found, value)
 
         self.populate_widget()
 
-    def nocaps_filter(self, found: bool, value: str) -> None:
+    def handle_nocaps(self, found: bool, value: str) -> None:
         if found:
             self.components -= (
                 component_values["caption"] + component_values["all_captions"]
             )
 
-    def lang_filter(self, found: bool, value: str) -> None:
+    def handle_lang(self, found: bool, value: str) -> None:
         if not value:
             value = "en"
         self.lang = value
 
-    def zones_filter(self, found: bool, value: str) -> None:
+    def handle_zones(self, found: bool, value: str) -> None:
         if not value:
             value = "all"
         self.zones = value
 
-    def accent_filter(self, found: bool, value: str) -> None:
+    def handle_accent(self, found: bool, value: str) -> None:
         if value:
             value = 'data-accent="{}"'.format(value)
         self.accent = value
 
-    def theme_filter(self, found: bool, value: str) -> None:
+    def handle_theme(self, found: bool, value: str) -> None:
         if not value or value == "anki":
             if aqt.theme.theme_manager.night_mode:
                 value = "dark"
@@ -114,10 +113,10 @@ class YouGlishFilter:
         value = "theme_" + value
         self.theme = value
 
-    def autoplay_filter(self, found: bool, value: str) -> None:
+    def handle_autoplay(self, found: bool, value: str) -> None:
         self.autoplay = found
 
-    def label_filter(self, found: bool, value: str) -> None:
+    def handle_label(self, found: bool, value: str) -> None:
         if not value:
             value = "Youglish"
         self.label = value
@@ -130,37 +129,37 @@ class YouGlishFilter:
     CLOZE = re.compile(r"(?xsi)\{\{c(\d+)::(.*?)(?:::(.*?))?\}\}")
 
     def _reveal_cloze_text_only(self) -> str:
-        def match_filter(match: re.Match) -> bool:
+        def match_cloze(match: re.Match) -> bool:
             try:
                 captured_ord = int(match.group(1))
             except ValueError:
                 captured_ord = 0
             return captured_ord == self.context.card().ord + 1
 
-        matches = filter(match_filter, self.CLOZE.finditer(self.query))
+        matches = filter(match_cloze, self.CLOZE.finditer(self.query))
         return " ".join(map(lambda match: match.group(2), matches))
 
-    def cloze_only_filter(self, found: bool, value: str) -> None:
+    def handle_clozeonly(self, found: bool, value: str) -> None:
         if not found:
             return
         self.query = self._reveal_cloze_text_only()
 
-    def width_filter(self, found: bool, value: str) -> None:
+    def handle_width(self, found: bool, value: str) -> None:
         if value:
             value = f'width="{value}"'
         self.width = value
 
-    def height_filter(self, found: bool, value: str) -> None:
+    def handle_height(self, found: bool, value: str) -> None:
         if value:
             value = f'height="{value}"'
         self.height = value
 
-    def restrict_filter(self, found: bool, value: str) -> None:
+    def handle_restrict(self, found: bool, value: str) -> None:
         if not value:
             value = "0"
         self.restrict = value
 
-    def hotkey_filter(self, found: bool, value: str) -> None:
+    def handle_hotkey(self, found: bool, value: str) -> None:
         self.hotkey = value
 
     def populate_widget(self) -> None:
