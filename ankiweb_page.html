@@ -25,9 +25,7 @@ Its usage is quite simple. Let's go through some examples:
 <code>{{aglish restrict=1:Front}}</code> The default is <code>0</code> (disabled).
 <li>You can set hotkeys to trigger non-autoplayed widgets using the <code>hotkey</code> option:
 <code>{{aglish hotkey=k:Front}}</code>
-Only single keys work for now. (no combinations like <code>Ctrl+K</code>)</li>
-</li>
-</ul>
+Only single keys work for now. (no combinations like <code>Ctrl+K</code>)</li></ul>
 All options have default values so they can be omitted; <code>{{aglish:Front}}</code> assumes English in all accents, showing a widget in Anki's theme with captions.
 For a list of all supported languages and accents, see <a href="https://youglish.com/api/doc/js-api">YouGlish documentation</a> (scroll down to the documentation of the <code>widget.fetch</code> function).
 Watch <a href="https://www.youtube.com/watch?v=aqc98e5ar64">this video</a> for a demo of the add-on.
@@ -35,6 +33,13 @@ Watch <a href="https://www.youtube.com/watch?v=aqc98e5ar64">this video</a> for a
 <b>Experimental Support for YouGlish login</b>
 I've recently added experimental support to allow users to use their YouGlish account and premium subscription plans in the add-on. This is not tested. I appreciate if someone can test it with their premium plan and tell me about the result.
 To use your YouGlish account with the add-on, you first need to log in to your YouGlish account in your web browser, then copy some cookie values and paste them in the <a href="https://docs.ankiweb.net/addons.html">add-on's config</a> under the <code>cookies</code> property. You can see the cookies by opening the developer tools of your browser and going to the Storage tab, then you will find a list of values under Cookies &gt; https://youglish.com. You need to copy at least the values of the cookies with the following names: <code>__stripe_mid</code>, <code>yg_username</code>, <code>yg_session</code>, and <code>JSESSIONID</code>. See https://cookie-script.com/documentation/how-to-check-cookies-on-chrome-and-firefox for more detailed instructions. You may need to change these values periodically, and you'll need to change them if you log out of your YouGlish account in the browser.
+
+<b>Changelog</b>
+- 2022-05-15: Added the <code>restrict</code> and <code>hotkey</code> options
+- 2022-02-16: Fixed error when opening the previewer or card layouts screen
+- 2022-02-12: Added experimental support for YouGlish login
+- 2021-07-12: Fixed issue in Anki 2.1.35
+- 2021-06-10: Initial release
 
 <b>References</b>
 YouGlish widget API:
