@@ -41,9 +41,8 @@ Its usage is quite simple. Let's go through some examples:
   `{{aglish lang=arabic width=600 height=500:Front}}`  
    The widget will expand to the window size if these options are not specified.
 - You can enable "Restricted mode" to block potentially inappropriate content to be displayed (aka Kids Mode)
-  by setting the "restrict" option to "1", like this:
-  `{{aglish restrict=1:Front}}`  
-  The default is `0` (disabled).
+  by setting the "restrict" option, like this:
+  `{{aglish restrict:Front}}`
 - You can set hotkeys to trigger non-autoplayed widgets using the `hotkey` option:  
   `{{aglish hotkey=k:Front}}`  
   Only single keys work for now. (no combinations like `Ctrl+K`)
@@ -73,7 +72,6 @@ YouGlish widget API:
 - https://youglish.com/api/doc/widget
 - https://youglish.com/api/doc/js-api
 
-
 ## YouGlish & YouTube Terms of Service
 
 You may want to read the Privacy & Terms of Service pages of both YouGlish and YouTube:
@@ -81,7 +79,6 @@ You may want to read the Privacy & Terms of Service pages of both YouGlish and Y
 - https://youglish.com/terms
 - https://www.youtube.com/t/terms
 - https://policies.google.com/privacy
-
 
 ## Support
 

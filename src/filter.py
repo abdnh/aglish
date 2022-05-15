@@ -155,7 +155,8 @@ class YouGlishFilter:
         self.height = value
 
     def handle_restrict(self, found: bool, value: str) -> None:
-        if not value:
+        value = "1"
+        if not found:
             value = "0"
         self.restrict = value
 
