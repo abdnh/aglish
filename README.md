@@ -44,6 +44,9 @@ Its usage is quite simple. Let's go through some examples:
   by setting the "restrict" option to "1", like this:
   `{{aglish restrict=1:Front}}`  
   The default is `0` (disabled).
+- You can set hotkeys to trigger non-autoplayed widgets using the `hotkey` option:  
+  `{{aglish hotkey=k:Front}}`  
+  Only single keys work for now. (no combinations like `Ctrl+K`)
 
 All options have default values so they can be omitted; `{{aglish:Front}}` assumes English in all accents, showing a widget in Anki's theme with captions.
 

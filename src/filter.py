@@ -4,8 +4,8 @@ import aqt
 from anki.template import TemplateRenderContext
 
 BUTTON_HTML = """\
-<button id="yg-btn-{id}" style="min-width: 50px; min-height: 25px" \
-onclick="onYGButtonClick(this)">{label}</button>
+<button class="yg-btn" id="yg-btn-{id}" style="min-width: 50px; min-height: 25px" \
+onclick="onYGButtonClick(this)" data-hotkey="{hotkey}">{label}</button>
 """
 
 WIDGET_HTML = """\
@@ -59,6 +59,7 @@ class YouGlishFilter:
             "width": self.width_filter,
             "height": self.height_filter,
             "restrict": self.restrict_filter,
+            "hotkey": self.hotkey_filter,
         }
 
         self.components = 10495
@@ -159,10 +160,13 @@ class YouGlishFilter:
             value = "0"
         self.restrict = value
 
+    def hotkey_filter(self, found: bool, value: str) -> None:
+        self.hotkey = value
+
     def populate_widget(self) -> None:
         text = ""
         if not self.autoplay:
-            text += BUTTON_HTML.format(id=self.ID, label=self.label)
+            text += BUTTON_HTML.format(id=self.ID, label=self.label, hotkey=self.hotkey)
         text += WIDGET_HTML.format(
             id=self.ID,
             query=self.query,
