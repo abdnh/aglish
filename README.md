@@ -82,6 +82,7 @@ You may want to read the Privacy & Terms of Service pages of both YouGlish and Y
 
 ## Support
 
-Consider supporting me on Ko-fi if you like my add-ons.
+Consider supporting me on Ko-fi or Patreon if you like my add-ons:
 
-<a href='https://ko-fi.com/U7U8AE997' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+<a href='https://ko-fi.com/U7U8AE997'><img height='36' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+<a href="https://www.patreon.com/abdnh"><img height='36' src="https://i.imgur.com/mZBGpZ1.png"></a>
