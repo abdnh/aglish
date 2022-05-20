@@ -26,7 +26,8 @@ function onYGButtonClick(el) {
 document.addEventListener("keydown", (e) => {
     const ygButtons = document.getElementsByClassName("yg-btn");
     for (const button of ygButtons) {
-        if (button.dataset.hotkey.toLowerCase() == e.key.toLowerCase()) {
+        const key = e.key.toLowerCase();
+        if (window.aglishHotkey.toLowerCase() == key || button.dataset.hotkey.toLowerCase() == key) {
             button.click();
         }
     }

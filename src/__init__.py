@@ -1,3 +1,4 @@
+import json
 from typing import Any, Optional
 
 import anki
@@ -50,13 +51,17 @@ def on_webview_will_set_content(
     ):
         return
 
+    config = context.mw.addonManager.getConfig(__name__)
+
     web_content.body += (
         '<script async src="https://youglish.com/public/emb/widget.js"></script>'
     )
     web_content.body += f'<script defer src="{addon_folder}/aglish.js"></script>'
 
+    hotkey = json.dumps(config["hotkey"])
+    web_content.body += f"<script>window.aglishHotkey = {hotkey};</script>"
+
     # Experimental support for YouGlish login - not tested
-    config = context.mw.addonManager.getConfig(__name__)
     cookies = config.get("cookies", {})
     if isinstance(context, Previewer):
         web = context._web  # pylint: disable=protected-access
