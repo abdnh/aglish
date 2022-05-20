@@ -45,7 +45,8 @@ Its usage is quite simple. Let's go through some examples:
   `{{aglish restrict:Front}}`
 - You can set hotkeys to trigger non-autoplayed widgets using the `hotkey` option:  
   `{{aglish hotkey=k:Front}}`  
-  Only single keys work for now. (no combinations like `Ctrl+K`)
+  Only single keys work for now. (no combinations like `Ctrl+K`)  
+  You can alternatively set a similar `hotkey` config option under **Tools > Add-ons > Config** to trigger all non-autoplayed widgets without having to specify the hotkey in each filter.
 
 All options have default values so they can be omitted; `{{aglish:Front}}` assumes English in all accents, showing a widget in Anki's theme with captions.
 
