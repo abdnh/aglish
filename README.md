@@ -4,9 +4,8 @@ Read in: [العربية](README.ar.md)
 
 ---
 
-[Anki](https://apps.ankiweb.net/) add-on for [YouGlish](https://youglish.com/); a service that helps you learn
-a language in context by showing you Youtube videos containing a word or a phrase you want
-to learn its pronunciation, meaning, etc.
+[Anki](https://apps.ankiweb.net/) add-on for [YouGlish](https://youglish.com/); a YouTube search engine
+for language learning that helps you learn vocabulary in context.
 
 ![YouGlish Widget](youglish-widget.png)
 
