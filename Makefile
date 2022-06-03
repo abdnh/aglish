@@ -7,11 +7,13 @@ zip: aglish.ankiaddon
 aglish.ankiaddon: src/*
 	rm -f $@
 	rm -rf src/__pycache__
+	rm -rf src/meta.json
 	( cd src/; zip -r ../$@ * )
 
 # Install in a testing profile
 install:
 	rm -rf src/__pycache__
+	rm -rf src/meta.json
 	cp -r src/. ankiprofile/addons21/aglish
 
 fix:
@@ -29,7 +31,6 @@ pylint:
 	python -m pylint src
 
 clean:
-	rm -f *.pyc
-	rm -f src/*.pyc
 	rm -f src/__pycache__
+	rm -rf src/meta.json
 	rm -f aglish.ankiaddon
