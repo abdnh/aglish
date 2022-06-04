@@ -16,6 +16,8 @@ disable=
   unused-argument,
   broad-except,
   bare-except,
+  wildcard-import,
+  unused-wildcard-import,
 
 [BASIC]
 good-names =

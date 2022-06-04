@@ -1,9 +1,6 @@
 {
     "cookies": {
-        "yg_username": "",
-        "yg_session": "",
-        "JSESSIONID": "",
-        "__stripe_mid": ""
     },
-    "hotkey": "k"
+    "hotkey": "k",
+    "show_login_help": true
 }

@@ -7,11 +7,13 @@ from anki.cards import Card
 from aqt import gui_hooks
 from aqt.clayout import CardLayout
 from aqt.previewer import Previewer
+from aqt.qt import *
 from aqt.qt import QUrl, qtmajor
 from aqt.reviewer import Reviewer
 from aqt.webview import WebContent
 
 from .filter import YouGlishFilter
+from .youglish_login import YouGlishLoginDialog
 
 if qtmajor > 5:
     from PyQt6.QtNetwork import QNetworkCookie
@@ -76,9 +78,22 @@ def on_webview_will_set_content(
             cookie_store.setCookie(cookie, QUrl("https://youglish.com/"))
 
 
+def add_aglish_menu() -> None:
+    def on_login_clicked() -> None:
+        page = YouGlishLoginDialog(aqt.mw)
+        page.exec()
+
+    menu = QMenu("Aglish", aqt.mw)
+    login_action = QAction("Log in to YouGlish", menu)
+    qconnect(login_action.triggered, on_login_clicked)
+    menu.addAction(login_action)
+    aqt.mw.form.menuTools.addMenu(menu)
+
+
 if aqt.mw:
     addon_folder = "/_addons/" + aqt.mw.addonManager.addonFromModule(__name__)
     aqt.mw.addonManager.setWebExports(__name__, r".*js")
     anki.hooks.field_filter.append(youglish_filter)
     gui_hooks.card_will_show.append(on_card_will_show)
     aqt.gui_hooks.webview_will_set_content.append(on_webview_will_set_content)
+    add_aglish_menu()

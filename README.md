@@ -57,13 +57,9 @@ Watch [this video](https://www.youtube.com/watch?v=aqc98e5ar64) for a demo of th
 
 I've recently added experimental support to allow users to use their YouGlish account and premium subscription plans in the add-on. This is not tested. I appreciate if someone can test it with their premium plan and tell me about the result.
 
-To use your YouGlish account with the add-on, you first need to log in to your YouGlish account in your
-web browser, then copy some cookie values and paste them in the [add-on's config](https://docs.ankiweb.net/addons.html) under the `cookies` property.
-You can see the cookies by opening the developer tools of your browser and going to the Storage tab,
-then you will find a list of values under **Cookies > https://youglish.com**. You need to copy at least
-the values of the cookies with the following names: `__stripe_mid`, `yg_username`, `yg_session`, and `JSESSIONID`.
-See https://cookie-script.com/documentation/how-to-check-cookies-on-chrome-and-firefox for more detailed instructions.
-You may need to change these values periodically, and you'll need to change them if you log out of your YouGlish account in the browser.
+To use your YouGlish account with the add-on, go to _Tools > Aglish > Log in to YouGlish_.
+You'll be presented with the YouGlish login page. After logging in successfully, you can close the window.
+The add-on will now use your login information when showing the widget on cards.
 
 ## References
 

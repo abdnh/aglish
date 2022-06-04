@@ -33,9 +33,12 @@ Watch <a href="https://www.youtube.com/watch?v=aqc98e5ar64">this video</a> for a
 
 <b>Experimental Support for YouGlish login</b>
 I've recently added experimental support to allow users to use their YouGlish account and premium subscription plans in the add-on. This is not tested. I appreciate if someone can test it with their premium plan and tell me about the result.
-To use your YouGlish account with the add-on, you first need to log in to your YouGlish account in your web browser, then copy some cookie values and paste them in the <a href="https://docs.ankiweb.net/addons.html">add-on's config</a> under the <code>cookies</code> property. You can see the cookies by opening the developer tools of your browser and going to the Storage tab, then you will find a list of values under Cookies &gt; https://youglish.com. You need to copy at least the values of the cookies with the following names: <code>__stripe_mid</code>, <code>yg_username</code>, <code>yg_session</code>, and <code>JSESSIONID</code>. See https://cookie-script.com/documentation/how-to-check-cookies-on-chrome-and-firefox for more detailed instructions. You may need to change these values periodically, and you'll need to change them if you log out of your YouGlish account in the browser.
+To use your YouGlish account with the add-on, go to <i>Tools > Aglish > Log in to YouGlish</i>. You'll be presented with the YouGlish login page. After logging in successfully, you can close the window. The add-on will now use your login information when showing the widget on cards.
 
 <b>Changelog</b>
+- 2022-06-04:
+  - Streamlined support for YouGlish login via a webview that can be accessed from Anki.
+  - Added a config option to set a global hotkey to trigger the widgets
 - 2022-05-15: Added the <code>restrict</code> and <code>hotkey</code> options
 - 2022-02-16: Fixed error when opening the previewer or card layouts screen
 - 2022-02-12: Added experimental support for YouGlish login
