@@ -60,7 +60,7 @@ class YouGlishLoginDialog(QDialog):
 
     def closeEvent(self, event: QCloseEvent) -> None:  # pylint: disable=invalid-name
         if self.youglish_cookies:
-            self.config["cookies"] = self.youglish_cookies
+            self.config["cookies"].update(self.youglish_cookies)
             self.mw.addonManager.writeConfig(__name__, self.config)
         return super().closeEvent(event)
 
