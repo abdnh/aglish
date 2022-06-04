@@ -82,6 +82,9 @@ def add_aglish_menu() -> None:
     def on_login_clicked() -> None:
         page = YouGlishLoginDialog(aqt.mw)
         page.exec()
+        if hasattr(page.web, "cleanup"):
+            # Avoid leaking memory - works on Anki 2.1.50+
+            page.web.cleanup()
 
     menu = QMenu("Aglish", aqt.mw)
     login_action = QAction("Log in to YouGlish", menu)
