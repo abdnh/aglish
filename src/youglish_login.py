@@ -22,10 +22,7 @@ class YouGlishLoginDialog(QDialog):
         self.setWindowTitle("YouGlish Login")
         # pylint: disable=no-member
         self.setWindowFlags(
-            cast(
-                Qt.WindowFlags,
-                self.windowFlags() | Qt.WindowType.WindowContextHelpButtonHint,
-            )
+            self.windowFlags() | Qt.WindowType.WindowContextHelpButtonHint
         )
         vbox = QVBoxLayout()
         self.web = AnkiWebView(self, title="Log in to YouGlish")
