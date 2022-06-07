@@ -31,6 +31,7 @@ class YouGlishLoginDialog(QDialog):
         self.web = AnkiWebView(self, title="Log in to YouGlish")
         vbox.addWidget(self.web)
         self.web.set_open_links_externally(False)
+        self.restore_cookies()
         self.web.load(QUrl("https://youglish.com/login"))
         self.web.setZoomFactor(1)
         # pylint: disable=no-member
@@ -43,6 +44,13 @@ class YouGlishLoginDialog(QDialog):
         qconnect(
             self.web.page().profile().cookieStore().cookieAdded, self.on_cookie_added
         )
+
+    def restore_cookies(self) -> None:
+        cookie_store = self.web.page().profile().cookieStore()
+        for name, value in self.config.get("cookies", {}).items():
+            if value:
+                cookie = QNetworkCookie(name.encode(), value.encode())
+                cookie_store.setCookie(cookie, QUrl("https://youglish.com/"))
 
     def exec(self) -> int:
         if self.config.get("show_login_help", True):
