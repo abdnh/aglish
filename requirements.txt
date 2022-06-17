@@ -1,7 +1,6 @@
-anki
-aqt
-PyQt5
-PyQt6
+anki==2.1.45
+aqt==2.1.45
+pyqt6==6.3.0
 pylint
 black
 mypy
