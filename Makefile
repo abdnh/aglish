@@ -10,12 +10,6 @@ aglish.ankiaddon: src/*
 	rm -f src/meta.json
 	( cd src/; zip -r ../$@ * )
 
-# Install in a testing profile
-install:
-	rm -rf src/__pycache__
-	rm -f src/meta.json
-	cp -r src/. ankiprofile/addons21/aglish
-
 fix:
 	python -m black src
 	python -m isort src
