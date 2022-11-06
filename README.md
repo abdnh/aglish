@@ -82,7 +82,8 @@ You may want to read the Privacy & Terms of Service pages of both YouGlish and Y
 
 Please post any questions, bug reports, or feature requests in the [support page](https://forums.ankiweb.net/t/aglish-youglish-widget-for-anki-official-thread/14503) or the [issue tracker](https://github.com/abdnh/aglish/issues).
 
-If you want priority support for your feature/help request, I'm available for hire. Please contact me via [email](mailto:abdo@abdnh.net) or on [Fiverr](https://www.fiverr.com/abd_nh).
+If you want priority support for your feature/help request, I'm available for hire.
+You can get in touch from the aforementioned pages, via [email](mailto:abdo@abdnh.net) or on [Fiverr](https://www.fiverr.com/abd_nh).
 
 ## Support me
 
