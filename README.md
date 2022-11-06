@@ -4,6 +4,10 @@ Read in: [العربية](README.ar.md)
 
 ---
 
+<center>
+<img src="./images/logo-256w.png">
+</center>
+
 [Anki](https://apps.ankiweb.net/) add-on for [YouGlish](https://youglish.com/); a YouTube search engine
 for language learning that helps you learn vocabulary in context.
 
