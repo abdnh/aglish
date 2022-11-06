@@ -7,7 +7,7 @@ Read in: [العربية](README.ar.md)
 [Anki](https://apps.ankiweb.net/) add-on for [YouGlish](https://youglish.com/); a YouTube search engine
 for language learning that helps you learn vocabulary in context.
 
-![YouGlish Widget](youglish-widget.png)
+![YouGlish Widget](./images/youglish-widget.png)
 
 YouGlish supports many languages and customizations of the interface. This add-on supports all languages supported by YouGlish and some customizations.
 
