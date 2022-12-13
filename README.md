@@ -53,6 +53,24 @@ All options have default values so they can be omitted; `{{aglish:Front}}` assum
 
 For a list of all supported languages and accents, see [YouGlish documentation](https://youglish.com/api/doc/js-api) (scroll down to the documentation of the `widget.fetch` function).
 
+### Styling
+
+You can style the buttons by targeting the `yg-btn` CSS class in the styling section. E.g.
+
+```css
+.yg-btn {
+  opacity: 0.8;
+  background-color: #c11615;
+  color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.yg-btn:hover {
+  box-shadow: 1px 1px 1px black;
+}
+```
+
 Watch [this video](https://www.youtube.com/watch?v=aqc98e5ar64) for a demo of the add-on.
 
 ## Experimental Support for YouGlish login

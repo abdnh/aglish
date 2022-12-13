@@ -31,6 +31,22 @@ Only single keys work for now. (no combinations like <code>Ctrl+K</code>)
 You can alternatively set a similar <code>hotkey</code> config option from <i>Tools > Add-ons > Config</i> to trigger all non-autoplayed widgets without having to specify the hotkey in each filter.</li></ul>
 All options have default values so they can be omitted; <code>{{aglish:Front}}</code> assumes English in all accents, showing a widget in Anki's theme with captions.
 For a list of all supported languages and accents, see <a href="https://youglish.com/api/doc/js-api">YouGlish documentation</a> (scroll down to the documentation of the <code>widget.fetch</code> function).
+
+<b>Styling</b>
+You can style the buttons by targeting the <code>yg-btn</code> CSS class in the styling section. E.g.
+
+<code>.yg-btn {
+  opacity: 0.8;
+  background-color: #c11615;
+  color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.yg-btn:hover {
+  box-shadow: 1px 1px 1px black;
+}</code>
+
 Watch <a href="https://www.youtube.com/watch?v=aqc98e5ar64">this video</a> for a demo of the add-on.
 
 <b>Experimental Support for YouGlish login</b>
