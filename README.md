@@ -96,6 +96,11 @@ You may want to read the Privacy & Terms of Service pages of both YouGlish and Y
 - https://www.youtube.com/t/terms
 - https://policies.google.com/privacy
 
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a list of changes.
+
 ## Support & feature requests
 
 Please post any questions, bug reports, or feature requests in the [support page](https://forums.ankiweb.net/t/aglish-youglish-widget-for-anki-official-thread/14503) or the [issue tracker](https://github.com/abdnh/aglish/issues).
