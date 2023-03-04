@@ -5,5 +5,5 @@ __pycache__/
 *.pyc
 venv/
 *.ankiaddon
-ankiprofile/
+ankidata/
 src/meta.json
