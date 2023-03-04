@@ -1,6 +1,22 @@
 {
-    "cookies": {
+    "components": {
+        "search_box": true,
+        "accent_panel": true,
+        "title": true,
+        "caption": true,
+        "all_captions": true,
+        "speed_controls": true,
+        "toggle_light": false,
+        "toggle_thumbnails": false,
+        "control_buttons": true,
+        "nearby_panel": true,
+        "phonetic_panel": false,
+        "dictionary": true,
+        "draggable": false,
+        "minimizable": false,
+        "closable": true
     },
+    "cookies": {},
     "hotkey": "k",
     "show_login_help": true
 }

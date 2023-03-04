@@ -1,76 +1,81 @@
-<img src="https://raw.githubusercontent.com/abdnh/aglish/master/images/logo-256w.png">
+<img src="https://raw.githubusercontent.com/abdnh/aglish/master/./images/logo-256w.png"/>
 
-This add-on connects Anki with <a href="https://youglish.com/">YouGlish</a>; a YouTube search engine for language learning that helps you learn vocabulary in context.
-<img alt="YouGlish Widget" src="https://raw.githubusercontent.com/abdnh/aglish/master/images/youglish-widget.png"/>
-YouGlish supports many languages and customizations of the interface. This add-on supports all languages supported by YouGlish and some customizations.
+Add-on for <a href="https://youglish.com/">YouGlish</a>; a YouTube search engine for language learning that helps you learn vocabulary in context.
+<img alt="YouGlish Widget" src="https://raw.githubusercontent.com/abdnh/aglish/master/./images/youglish-widget.png"/>
+YouGlish supports many languages and customizations of the interface. This add-on supports all languages supported by YouGlish and customizations.
 
 <b>Usage</b>
 The add-on integrates YouGlish with Anki through a custom filter you put in your <a href="https://docs.ankiweb.net/templates/intro.html">card templates</a> (e.g. <code>{{aglish:Front}}</code>).
 Its usage is quite simple. Let's go through some examples:
-<ul>
-<li><code>{{aglish lang=english accent=uk:Front}}</code> This will show you video usage examples of the text in your Front field in British English.</li>
-<li>The video widget will be hidden behind a button by default. You can change the text shown on the button via the <code>label</code> option (no spaces allowed for now):
-<code>{{aglish lang=english accent=uk label=youglish_english_uk:Front}}</code></li>
-<li>Alternatively, You can make the video play automatically by using the <code>autoplay</code> option:
-<code>{{aglish lang=english accent=uk autoplay:Front}}</code> Bear in mind that if you review a lot of cards quickly with autoplay enabled, you may get temporarily blocked or asked to solve a captcha. It's recommended to enable autoplay only when the main focus of your note type is the YouGlish videos, so that you won't go to the next card before watching a clip, or you will be just answering cards without thinking.</li>
-<li>You can combine Anki's <code>cloze-only</code> filter with the <code>aglish</code> filter to query only elided sections in cloze note types:
-<code>{{aglish lang=english:cloze-only:Text}}</code></li>
-<li>The <code>cloze-only</code> filter only works on the back side, so this add-on provides a similar option (<code>clozeonly</code>) that works on both sides as a bonus:
-<code>{{aglish lang=english clozeonly:Text}}</code></li>
-<li>The <code>nocaps</code> option is useful here to hide captions when watching clips containing elided text in the front side:
-<code>{{aglish lang=english clozeonly nocaps:Text}}</code></li>
-<li>You can also change the widget theme using the <code>theme</code> option:
-<code>{{aglish theme=dark:Text}}</code> Available values are <code>light</code>, <code>dark</code>, and <code>anki</code> (theme used in Anki's interface, the default).</li>
-<li>The width and height of the widget can be customized using the <code>width</code> and <code>height</code> options:
-<code>{{aglish lang=arabic width=600 height=500:Front}}</code> The widget will expand to the window size if these options are not specified.</li>
-<li>You can enable "Restricted mode" to block potentially inappropriate content to be displayed (aka Kids Mode) by setting the "restrict" option, like this:
-<code>{{aglish restrict:Front}}</code>
-<li>You can set hotkeys to trigger non-autoplayed widgets using the <code>hotkey</code> option:
+<ul><li><code>{{aglish lang=english accent=uk:Front}}</code>
+    This will show you video usage examples of the text in your Front field in British English.</li><li>The video widget will be hidden behind a button by default.
+    You can change the text shown on the button via the <code>label</code> option (no spaces allowed for now):
+<code>{{aglish lang=english accent=uk label=youglish_english_uk:Front}}</code></li><li>Alternatively, You can make the video play automatically by using the <code>autoplay</code> option:
+<code>{{aglish lang=english accent=uk autoplay:Front}}</code>
+    Bear in mind that if you review a lot of cards quickly with autoplay enabled, you may get temporarily blocked or
+    asked to solve a captcha. It's recommended to enable autoplay only when the main focus of your note type is the YouGlish videos,
+    so that you won't go to the next card before watching a clip, or you will be just answering cards without thinking.</li><li>You can combine Anki's <code>cloze-only</code> filter with the <code>aglish</code> filter to query only elided sections in cloze note types:
+<code>{{aglish lang=english:cloze-only:Text}}</code></li><li>The <code>cloze-only</code> filter only works on the back side, so this add-on provides a similar option (<code>clozeonly</code>) that works on both sides as a bonus:
+<code>{{aglish lang=english clozeonly:Text}}</code></li><li>The <code>nocaps</code> option is useful here to hide captions when watching clips containing elided text in the front side:
+<code>{{aglish lang=english clozeonly nocaps:Text}}</code></li><li>You can also change the widget theme using the <code>theme</code> option:
+<code>{{aglish theme=dark:Text}}</code>
+     Available values are <code>light</code>, <code>dark</code>, and <code>anki</code> (theme used in Anki's interface, the default).</li><li>The width and height of the widget can be customized using the <code>width</code> and <code>height</code> options:
+<code>{{aglish lang=arabic width=600 height=500:Front}}</code>
+     The widget will expand to the window size if these options are not specified.</li><li>You can enable "Restricted mode" to block potentially inappropriate content to be displayed (aka Kids Mode)
+    by setting the "restrict" option, like this:
+    <code>{{aglish restrict:Front}}</code></li><li>You can set hotkeys to trigger non-autoplayed widgets using the <code>hotkey</code> option:
 <code>{{aglish hotkey=k:Front}}</code>
-Only single keys work for now. (no combinations like <code>Ctrl+K</code>)
-You can alternatively set a similar <code>hotkey</code> config option from <i>Tools > Add-ons > Config</i> to trigger all non-autoplayed widgets without having to specify the hotkey in each filter.</li></ul>
+    Only single keys work for now. (no combinations like <code>Ctrl+K</code>)
+    You can alternatively set a similar <code>hotkey</code> config option under <i>Tools &gt; Add-ons &gt; Config</i> to trigger all non-autoplayed widgets without having to specify the hotkey in each filter.</li></ul>
 All options have default values so they can be omitted; <code>{{aglish:Front}}</code> assumes English in all accents, showing a widget in Anki's theme with captions.
 For a list of all supported languages and accents, see <a href="https://youglish.com/api/doc/js-api">YouGlish documentation</a> (scroll down to the documentation of the <code>widget.fetch</code> function).
 
+<b>Widget Components</b>
+You can toggle widget's components like the search bar via the config's <code>components</code> key (<i>Tools &gt; Add-ons &gt; Config</i>). See <a href="https://youglish.com/api/doc/widget">this page</a> to experiment with available components. For example to hide the search bar, you can set <code>search_box</code> to <code>false</code>:
+<code>"components": {
+    "search_box": false,
+    ...
+    ...
+}</code>
+
 <b>Styling</b>
 You can style the buttons by targeting the <code>yg-btn</code> CSS class in the styling section. E.g.
-
 <code>.yg-btn {
-  opacity: 0.8;
-  background-color: #c11615;
-  color: white;
-  border: 1px solid black;
-  border-radius: 5px;
+    opacity: 0.8;
+    background-color: #c11615;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
 .yg-btn:hover {
-  box-shadow: 1px 1px 1px black;
+    box-shadow: 1px 1px 1px black;
 }</code>
 
+<b>Demo</b>
 Watch <a href="https://www.youtube.com/watch?v=aqc98e5ar64">this video</a> for a demo of the add-on.
 
 <b>Experimental Support for YouGlish login</b>
 I've recently added experimental support to allow users to use their YouGlish account and premium subscription plans in the add-on. This is not tested. I appreciate if someone can test it with their premium plan and tell me about the result.
-To use your YouGlish account with the add-on, go to <i>Tools > Aglish > Log in to YouGlish</i>. You'll be presented with the YouGlish login page. After logging in successfully, you can close the window. The add-on will now use your login information when showing the widget on cards.
-
-<b>Changelog</b>
-See <a href="https://github.com/abdnh/aglish/blob/master/CHANGELOG.md">CHANGELOG.md</a> for a list of changes.
+To use your YouGlish account with the add-on, go to <i>Tools &gt; Aglish &gt; Log in to YouGlish</i>. You'll be presented with the YouGlish login page. After logging in successfully, you can close the window. The add-on will now use your login information when showing the widget on cards.
 
 <b>References</b>
 YouGlish widget API:
 <ul><li>https://youglish.com/api/doc/widget</li><li>https://youglish.com/api/doc/js-api</li></ul>
 
-<b>YouGlish & YouTube Terms of Service</b>
-You may want to read the Privacy & Terms of Service pages of both YouGlish and YouTube:
+<b>YouGlish &amp; YouTube Terms of Service</b>
+You may want to read the Privacy &amp; Terms of Service pages of both YouGlish and YouTube:
 <ul><li>https://youglish.com/terms</li><li>https://www.youtube.com/t/terms</li><li>https://policies.google.com/privacy</li></ul>
 
-<b>Support & feature requests</b>
+<b>Changelog</b>
+See <a href="https://github.com/abdnh/aglish/blob/master/CHANGELOG.md">CHANGELOG.md</a> for a list of changes.
+
+<b>Support &amp; feature requests</b>
 Please post any questions, bug reports, or feature requests in the <a href="https://forums.ankiweb.net/t/aglish-youglish-widget-for-anki-official-thread/14503">support page</a> or the <a href="https://github.com/abdnh/aglish/issues">issue tracker</a>.
-If you want priority support for your feature/help request, I'm available for hire. You can get in touch from the aforementioned pages, via <a href="mailto:abdo@abdnh.net">email</a> or on <a href="https://www.fiverr.com/abd_nh">Fiverr</a>.
+If you want priority support for your feature/help request, I'm available for hire. You can get in touch from the aforementioned pages, via <a href="https://github.com/abdnh/aglish/blob/master/mailto:abdo@abdnh.net">email</a> or on <a href="https://www.fiverr.com/abd_nh">Fiverr</a>.
 
 <b>Support me</b>
 Consider supporting me if you like my work:
-<a href="https://github.com/sponsors/abdnh"><img height='36' src="https://i.imgur.com/dAgtzcC.png"></a><a href="https://www.patreon.com/abdnh"><img height='36' src="https://i.imgur.com/mZBGpZ1.png"></a><a href='https://ko-fi.com/abdnh'><img height='36' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-
+<a href="https://github.com/sponsors/abdnh"><img height="36" src="https://i.imgur.com/dAgtzcC.png"/></a> <a href="https://www.patreon.com/abdnh"><img height="36" src="https://i.imgur.com/mZBGpZ1.png"/></a> <a href="https://ko-fi.com/abdnh"><img alt="Buy Me a Coffee at ko-fi.com" border="0" height="36" src="https://cdn.ko-fi.com/cdn/kofi1.png?v=3"/></a>
 I'm also available for freelance add-on development on Fiverr:
-<a href="https://www.fiverr.com/abd_nh/develop-an-anki-addon"><img height='36' src="https://i.imgur.com/0meG4dk.png"></a>
+<a href="https://www.fiverr.com/abd_nh/develop-an-anki-addon"><img height="36" src="https://i.imgur.com/0meG4dk.png"/></a>

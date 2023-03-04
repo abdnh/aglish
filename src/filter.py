@@ -1,4 +1,5 @@
 import re
+from typing import Any, Dict
 
 import aqt
 from anki.template import TemplateRenderContext
@@ -15,7 +16,6 @@ data-bkg-color="{theme}" {width} {height} data-rest-mode="{restrict}" data-delay
 rel="nofollow" href="https://youglish.com"></a>"""
 
 # Component IDs to customize some features according to Youglish's documentation.
-# Most customizations are not utilized by this add-on yet
 component_values = {
     "search_box": 1,
     "accent_panel": 2,
@@ -42,6 +42,7 @@ class YouGlishFilter:
         filter_text: str,
         text: str,
         context: TemplateRenderContext,
+        config: Dict[str, Any],
     ):
         if not filter_text.startswith("aglish"):
             self.text = text
@@ -62,22 +63,25 @@ class YouGlishFilter:
             "hotkey",
         }
 
-        self.components = 10495
+        self.components = 0
+        for key, value in component_values.items():
+            self.components += value if config["components"].get(key, False) else 0
+
         self.ID = ID
         self.autoplay = False
         self.query = text
         self.context = context
-        configs = {}
-        for config in map(lambda c: c.split("="), filter_text.split()[1:]):
+        options = {}
+        for option in map(lambda c: c.split("="), filter_text.split()[1:]):
             value = ""
-            if len(config) >= 2:
-                value = config[1]
-            configs[config[0].lower()] = value
+            if len(option) >= 2:
+                value = option[1]
+            options[option[0].lower()] = value
         for option in self.supported_options:
             found = False
-            if option in configs:
+            if option in options:
                 found = True
-            value = configs.get(option, "").lower()
+            value = options.get(option, "").lower()
             func = getattr(self, f"handle_{option}")
             func(found, value)
 

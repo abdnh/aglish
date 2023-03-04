@@ -4,7 +4,7 @@ from typing import Any, Optional
 import anki
 import aqt
 from anki.cards import Card
-from aqt import gui_hooks
+from aqt import gui_hooks, mw
 from aqt.clayout import CardLayout
 from aqt.previewer import Previewer
 from aqt.qt import *
@@ -29,8 +29,9 @@ def youglish_filter(
 ) -> str:
     current_id = context.extra_state.get("aglish_id", 0)
 
+    config = mw.addonManager.getConfig(__name__)
     try:
-        youglish = YouGlishFilter(current_id, filter_name, field_text, context)
+        youglish = YouGlishFilter(current_id, filter_name, field_text, context, config)
     except:
         return field_text
 
@@ -46,7 +47,6 @@ def on_card_will_show(text: str, card: Card, kind: str) -> str:
 def on_webview_will_set_content(
     web_content: WebContent, context: Optional[Any]
 ) -> None:
-
     if not isinstance(
         context,
         (Reviewer, Previewer, CardLayout),

@@ -1,2 +1,3 @@
-- **cookies**: This is used for YouGlish login. Please see [this page](https://github.com/abdnh/aglish#experimental-support-for-youglish-login).
-- **hotkey**: A hotkey to activate all non-autoplayed widgets. If you want to activate only a certain widget, you can set a similar `hotkey` option in the template filter.
+-   `components`: This allows you to toggle the widget components on and off. You can experiment with the different components in [this page](https://youglish.com/api/doc/widget).
+-   `cookies`: This is used for YouGlish login. Please see [this page](https://github.com/abdnh/aglish#experimental-support-for-youglish-login).
+-   `hotkey`: A hotkey to activate all non-autoplayed widgets. If you want to activate only a certain widget, you can set a similar `hotkey` option in the template filter.
