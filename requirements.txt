@@ -1,4 +1,4 @@
-anki==2.1.45
+anki==24.06
 aqt==2.1.45
 pyqt6==6.3.0
 pylint
